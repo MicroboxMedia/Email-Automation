@@ -84,21 +84,17 @@ job_csv = csv.reader(job_csv)
 for data in job_csv:
     subject_name_global = data[0] #company name
 
-    if data[3] != '': #company email
-        company_email = data[3]
         # company_email = "1senadi@hdsb.ca"
 
         #send email & check if it went successfully through
-        temp_list = []
-        temp_list.append(subject_name_global)
+    temp_list = [subject_name_global]
+    if data[3] != '': #company email
+        company_email = data[3]
         temp_list.append(send_email_companies(company_email, subject_name_global))
     else:
-        #no email address to send to - Unsuccessful
-        temp_list = []
-        temp_list.append(subject_name_global)
         temp_list.append("Unsuccessful")
 
-    
+
 
     email_check.append(temp_list)
 
